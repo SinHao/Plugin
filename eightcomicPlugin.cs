@@ -11,14 +11,15 @@ namespace CSNovelCrawler.Plugin
     {
         public bool CheckUrl(string url)
         {
-            Regex r = new Regex(@"^http:\/\/new\.comicvip\.com\/show");
-            Match m = r.Match(url);
-            if (m.Success)
+            string check = eightcomicDownloader.UseRegex(url, "TID");
+            if (!string.IsNullOrEmpty(check))
             {                
                 return true;
             }
             return false;
         }
+
+        
 
         public IDownloader CreateDownloader()
         {
